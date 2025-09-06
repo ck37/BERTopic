@@ -504,6 +504,9 @@ class BERTopic:
             # All documents matches zero-shot topics
             documents = assigned_documents
             embeddings = assigned_embeddings
+            
+            # BUG FIX: Update topic_sizes_ when all documents are assigned to zero-shot topics
+            self._update_topic_size(documents)
 
         # Sort and Map Topic IDs by their frequency
         if not self.nr_topics:
